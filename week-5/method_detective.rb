@@ -1,3 +1,9 @@
+# Replace in the "<???>" with the appropriate method (and arguments, if any).
+# Uncomment the calls to catch these methods red-handed.
+
+# When there's more than one suspect who could have
+# committed the crime, add additional calls to prove it.
+
 # “iNvEsTiGaTiOn”.<???>
 # => “InVeStIgAtIoN”
 
@@ -22,7 +28,7 @@
 # “The mystery of the missing first letter”.<???>
 # => “he mystery of the missing first letter”
 
-# “Elementary  ,    my   dear      Watson!”.<???>
+# “Elementary  ,    my   dear      Watson!”.<???>""
 # => “Elementary, my dear Watson!”
 
 #“z”.<???>
