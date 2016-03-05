@@ -1,0 +1,17 @@
+
+body {font-size: 100%;}
+.sidebar {background: red;}
+.flowers {font-size:2em;
+          color: white;
+          min-height:50%;
+          background: url('images/flower-big.jpg');
+          background-repeat:no-repeat;}
+
+
+@media  (max-width: 800px ){
+.sidebar{display:none;}
+.flowers{background: url('images/flower-small.jpg');
+         background-repeat:no-repeat;}
+}
+
+
