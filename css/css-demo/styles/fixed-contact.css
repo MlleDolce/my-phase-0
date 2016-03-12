@@ -20,6 +20,10 @@ section#contact-info p {
   border-right: 2px solid black;
 }
 
+/* We use the last-of-type selector
+to avoid the appearance of an extra
+border. */
+
 section#contact-info p:last-of-type {
   border-right: none;
 }

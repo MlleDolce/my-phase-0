@@ -14,16 +14,31 @@ body {
   font-size: 1.2em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica", sans-serif;
-}
-
 ul {
   list-style-type: square;
 }
 
-/* or a class (preceded by a period) 
-or ID (preceded by a hash) ... */
+/* You can select multiple tags at once! */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica", sans-serif;
+}
+
+/* 
+
+You can select a class (preceded by a period) 
+or ID (preceded by a hash).
+
+In HTML, a class is assigned like this:
+<p class="your-class-here">some text</p>
+
+An ID is assigned like this:
+<p id="your-id-here">some text</p>
+
+A given ID should only be used once in a document.
+A given class can be used multiple times in a document.
+
+*/
 
 .experience-category, #resume-title {
   font-family: 'Dancing Script', cursive;
@@ -31,7 +46,7 @@ or ID (preceded by a hash) ... */
 }
 
 /* You can use a tag AND a class
-to make it more specific. */
+to make the rule more specific. */
 
 h2.experience-category {
   font-size: 1.8em;
