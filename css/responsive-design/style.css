@@ -14,4 +14,19 @@ cite {
   padding-left: 0px;
 }
 
+/* you're welcome to edit the
+image, figure, and figcaption CSS if you'd like, 
+but it's optional! */
+img {
+  width: 100%;
+}
 
+figure {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+figcaption {
+  font-style: italic;
+  text-align: right;
+}
