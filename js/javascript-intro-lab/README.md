@@ -1,14 +1,19 @@
 # An Introduction to JavaScript
 
-The purpose of these lessons is to explore the features of JavaScript from the perspective of Ruby.  If you are not already familiar with Ruby, much of what you will find here will not make sense.
+The purpose of these lessons is to explore the features of JavaScript from the perspective of Ruby.  If you are not already familiar with Ruby, much of what you will find here will not make sense. After finishing these lessons, you will be familiar with the basic syntax and core features of JavaScript, and you should be able to recognize and articulate key points of differentiation from Ruby.
 
-Likewise, we will not be exploring all of the features that JavaScript provides.  All of client-side JavaScript has been ignored, as there is no comparable feature in Ruby.
+We will not be exploring all of the features that JavaScript provides. This guide doesn't cover using JavaScript to build interactive web pages.
 
-After finishing these lessons, you will be familiar with the basic syntax and core features of JavaScript, and you should be able to recognize and articulate key points of differentiation from Ruby.
-
-Throughout these lessons, use your [browser's console](http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers) to experiment with the examples given and refer to the outside sources provided via the references section (at the bottom of each page).  There is a lot of great reading out there, and it would be ridiculous to assume that we could provide an adequate treatment of these topics in these pages alone.  Use the reading.  Do your own exploring and experimenting and playing around with the console.  You'll be glad you did.
-
-Click [here](1_numbers.md) to start.
+## Contents
+- [Numbers](1_numbers.md)
+- [Strings](2_strings.md)
+- [Variables](3_variables.md)
+- [Functions vs. Methods](4_functions_vs_methods.md)
+- [Function Basics](5_function_basics.md)
+- [Built-in Methods](6_built_in_methods.md)
+- [Conditions and Logic](7_conditions_and_logic.md)
+- [If Statements](8_if_statements.md)
+- [Array Basics](9_array_basics.md)
 
 #### Core References
 
