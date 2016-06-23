@@ -13,6 +13,7 @@ A branch is a parallel track to an existing master file.  It is essentially a co
 * What is a commit? What makes a good commit message?
 
 A commit is when you save a version of your file at a point in time.  A good commit message is one that lets the reader know what changes you made at the time of the commit.
+
 * What is a merge conflict?
 
 A merge conflict is when multiple branches are merged with a master, but there have been changes to the same lines of code in both branches.  When this happens, the system does not know which code should remain and which code should be removed.  In this instance a choice must be made to find a way to either combine both of these codes into a single code, or choose one branch's solution over the other.
