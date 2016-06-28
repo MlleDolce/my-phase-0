@@ -11,3 +11,11 @@ margin-top: 15px;
 ul.job-description {
   font-size: .8em;
 }
+
+a:hover {
+  color: orange;
+}
+
+section#volunteer-experience {
+padding: 8px;
+}
