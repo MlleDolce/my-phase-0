@@ -16,5 +16,11 @@ puts "What is the hamster's fur color?"
 fur_color = gets.chomp
 puts "Is the hamster a good candidate for adoption? (y/n)"
 adoptable = gets.chomp
+if adoptable !== "y" || "n"
+	puts "That is an invalid response.  Answer with 'y' or 'n'"
+end
 puts "What is the hamster's estimated age?"
-hamster_age = gets.chomp.to_i
+hamster_age = gets.chomp.to_f
+if hamster_age.nil? == true
+	hamster_age = nil
+end
