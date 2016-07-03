@@ -1,4 +1,5 @@
 # Vampire-detection quiz
+# hours: ~11hrs.  Fri July 1 - Sat July 2
 
 def vampire_questionaire	
 
@@ -69,3 +70,5 @@ while times_run <= processing_number
 	puts vampire_questionaire
 	times_run += 1
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
