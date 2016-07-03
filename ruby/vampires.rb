@@ -3,16 +3,14 @@
 
 def vampire_questionaire	
 
-Vampire_status_probably_not = "Probably not a vampire"
-Vampire_status_probably = "Probably a vampire"
-Vampire_status_almost_certainly = "Almost certainly a vampire"
-Vampire_status_definitely = "Definitely a vampire!"
-
 	puts "What is your name?"
 	user_name = gets.chomp.to_s
 	if user_name == "Drake Cula" || user_name == "Tu Fang"
 		definitely_vampire = true
+	else
+		definitely_vampire = !true
 	end
+
 	puts "What year were you born?"
 	birth_year = gets.chomp.to_i
 	if birth_year <= 1936
@@ -20,16 +18,20 @@ Vampire_status_definitely = "Definitely a vampire!"
 	else birth_year > 1936
 		birth_category = "right age" 
 	end
+
 	puts "Our company serves garlic bread.  Should we order some for you? (y/n)"
 	garlic_desire = gets.chomp.to_s
+
 	puts "Would you like to enroll in the company's health insurance? (y/n)"
 	health_insurance_interest = gets.chomp.to_s
+
 	puts "Please list any allergies you have, one at a time.  Type done when finished"
 
 	while allergy_input = gets.chomp
   		case allergy_input
   		when "sunshine"
-  			puts "Probably a vampire."
+  			puts "Probably a vampire." if definitely_vampire == !true
+  			puts "Definitely a vampire!" if definitely_vampire == true
   			return
   		when "done"
   			puts "Thanks for your input"
