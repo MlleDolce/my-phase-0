@@ -1,6 +1,12 @@
 # Vampire-detection quiz
 
 def vampire_questionaire	
+
+Vampire_status_probably_not = "Probably not a vampire"
+Vampire_status_probably = "Probably a vampire"
+Vampire_status_almost_certainly = "Almost certainly a vampire"
+Vampire_status_definitely = "Definitely a vampire!"
+
 	puts "What is your name?"
 	user_name = gets.chomp.to_s
 	if user_name == "Drake Cula" || user_name == "Tu Fang"
@@ -17,6 +23,20 @@ def vampire_questionaire
 	garlic_desire = gets.chomp.to_s
 	puts "Would you like to enroll in the company's health insurance? (y/n)"
 	health_insurance_interest = gets.chomp.to_s
+	puts "Please list any allergies you have, one at a time.  Type done when finished"
+
+	while allergy_input = gets.chomp
+  		case allergy_input
+  		when "sunshine"
+  			puts "Probably a vampire."
+  			return
+  		when "done"
+  			puts "Thanks for your input"
+  			break		
+  		else
+  			puts "List another allergy."
+  		end
+  	end
 	
 	if (garlic_desire == "y" && health_insurance_interest == "n") || (garlic_desire == "n" && health_insurance_interest == "y")
 		one_yes_and_one_no = true
