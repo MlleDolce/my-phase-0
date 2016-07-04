@@ -19,6 +19,7 @@
 #        Theory: "string"[i].next = changing_letters ---> total += changing_letters
 # => f.) end loop with 'end'
 
+
 def encrypt()
 
 	puts "Enter a word to be encrypted."
@@ -29,12 +30,19 @@ def encrypt()
 	encrypted = Array.new
 
 	while counter <= word.length
-		##puts "running while loop"
-		##puts word[counter].next
+		puts "running while loop"
+		puts word[counter]
 		
-		current_character = word[counter].next
+		initial_character = word[counter]
 		
-		encrypted << current_character
+		if initial_character == ' '
+			encrypted << ' '
+		elsif initial_character == "z"
+			encrypted << "a"
+		else 
+			current_character = word[counter].next
+			encrypted << current_character
+		end
 		
 		counter += 1
 		
