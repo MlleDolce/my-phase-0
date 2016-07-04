@@ -19,40 +19,37 @@
 #        Theory: "string"[i].next = changing_letters ---> total += changing_letters
 # => f.) end loop with 'end'
 
+# puts "Enter a word to be encrypted."
+# word = gets.chomp.to_s
 
-def encrypt()
-
-	puts "Enter a word to be encrypted."
-	word = gets.chomp.to_s
+def encrypt(word)
 
 	counter =  0
-
 	encrypted = Array.new
 
 	while counter <= word.length
-		puts "running while loop"
-		puts word[counter]
+		##puts "running while loop"
+		##puts word[counter]
 		
 		initial_character = word[counter]
+		current_character = word[counter].next
 		
 		if initial_character == ' '
 			encrypted << ' '
 		elsif initial_character == "z"
 			encrypted << "a"
-		else 
-			current_character = word[counter].next
+		else
 			encrypted << current_character
 		end
 		
 		counter += 1
 		
 		if counter == word.length
-		puts "Your answer is: #{encrypted.join("")}"
+		puts "Your password is: #{encrypted.join("")}"
 		end
 	end
 end
 
-puts encrypt
 
 # Decrypt method 
 # that reverses the process above. 
@@ -89,9 +86,10 @@ puts encrypt
 # => d.) set increment at end: counter += 1
 # => e.) end loop with 'end'
 
-def decrypt
-	puts "Enter a word to be decrypted."
-	word = gets.chomp.to_s
+# puts "Enter a word to be decrypted."
+# word = gets.chomp.to_s
+
+def decrypt(word)
 
 	counter =  0
 	decrypted = Array.new
@@ -118,11 +116,19 @@ def decrypt
 	end
 end
 
-puts decrypt
+def interface_encrypt_decrypt
+	puts "Would you like to encrypt or decrypt a password?"
+	answer = gets.chomp.to_s
+	puts "Ok you chose #{answer}.  Please type your password."
+	password = gets.chomp.to_s
 
+	if answer == "encrypt"
+		puts encrypt(password)
+	elsif answer == "decrypt"
+		puts decrypt(password)
+	else 
+		puts "Choose either 'encrypt' or 'decrypt'"
+	end
+end
 
-
-
-
-
-
+puts interface_encrypt_decrypt
