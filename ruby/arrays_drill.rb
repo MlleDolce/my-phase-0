@@ -1,3 +1,29 @@
+# Release 2
+
+# At the top of your file, add a method that takes an array and an item as parameters, and returns the array with the item added. 
+# So add_to_array([], "a") would return ["a"], and add_to_array(["a", "b", "c", 1, 2], 3) would return ["a", "b", "c", 1, 2, 3]. 
+# Print a few test calls of the method.
+
+def add_to_array(array, a)
+	return array << a
+end
+
+p add_to_array(["parrot","dolphin","pineapple"], 7)
+p add_to_array([false, true], "elephant")
+
+
+
+# At the top of your file, add a method that takes three items as parameters and returns an array of those items. 
+# So build_array(1, "two", nil) would return [1, "two", nil].
+# This won't take much code, but the syntax might feel a bit odd.
+# At the bottom of the file, call the method to show that it works.
+
+def build_array(item1, item2, item3)
+	new_array = Array.new
+	return new_array.push("#{item1}", "#{item2}", "#{item3}")
+end
+p build_array("three", "four", "five")
+
 # 1. Initialize an empty array and store it in a variable (you can choose the name). Print the variable using p.
 My_Array = []
 p My_Array
