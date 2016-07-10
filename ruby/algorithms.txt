@@ -1,0 +1,19 @@
+#How to check your Email
+
+-open chrome browser on your computer or laptop
+-navigate to url bar and type in the website of your email provider
+-when website is loaded, look for 'username' and enter your username and look for 'password' and enter your password
+-click on login to receive access to your personal email
+-if you see unread emails, count them, store the variable in 'unread_emails' and tell your master there are #{unread_emails} unread emails
+
+
+# elevator algorithm for robot
+
+-search for two sliding metal doors that meet in the middle
+-while outside elevator:
+	-if doors are open and elevator has space inside, enter elevator
+	-if doors are open and elevator is full, wait for next elevator
+-upon entering elevator, find floor selecting panel and select which floor you would like to go to
+-until doors open again, remain still
+-if door opens, if it is your destined floor, exit elevator
+-else remain on elevator

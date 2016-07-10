@@ -1,0 +1,43 @@
+* {
+  font-family: Helvetica;
+  border-radius: 15px;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+#IntroP {
+  width: 65%;
+  text-align: center;
+  margin-left: 17%;
+}
+
+section.column-1 {
+  float: left;
+  width: 42%;
+  margin: 15px;
+  border: solid medium gray;
+  padding: 15px;
+  background-color: lightblue;
+}
+
+section.column-2 {
+  float: right;
+  width: 42%;
+  margin: 15px;
+  border: solid medium gray;
+  padding: 15px;
+  background-color: lightyellow;
+}
+
+footer {
+  clear: both;
+  text-align: center;
+  padding: 20px;
+}

@@ -1,3 +1,35 @@
+html{
+  float: left;
+}
+
+body {
+  float: right;
+  position: relative;
+  max-width: 960px;
+  left: 25%;
+}
+
+p {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+body.main {
+  display: block;
+  position: relative;
+  float: right;
+  width: 75%;
+  vertical-align: top;
+}
+
+#Wildflowers {
+  margin-right: 25%;
+  min-width: 700px;
+  text-align: center;
+}
+
 blockquote {
   border-left: 5px solid blue;
   padding: 15px;
@@ -9,13 +41,19 @@ cite {
   margin-top: 10px;
 }
 
-#external-links ul {
+section#external-links {
+  display: block;
+  position: relative;
   list-style-type: none;
   padding-left: 0px;
+  float: left;
+  vertical-align: top;
+  width: 25%;
+  right: 25%;
 }
 
 /* you're welcome to edit the
-image, figure, and figcaption CSS if you'd like, 
+image, figure, and figcaption CSS if you'd like,
 but it's optional! */
 img {
   width: 100%;
@@ -29,4 +67,34 @@ figure {
 figcaption {
   font-style: italic;
   text-align: right;
+}
+
+@media screen and (max-width: 500px) {
+  html{
+  float: none;
+  }
+  body {
+    position: none;
+    float: none;
+    left: none;
+  } 
+
+  p {
+    font-size: 10pt;
+  }
+
+  body.main {
+  float: left;
+  position: relative;
+  }
+
+  section#external-links {
+  position: relative;
+  float: none;
+  left: 25%;
+  }
+
+  section#external-links li {
+    font-size: 16pt;
+  }
 }
