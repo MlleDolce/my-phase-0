@@ -27,7 +27,7 @@ def encrypt(word)
 	counter =  0
 	encrypted = Array.new
 
-	while counter <= word.length
+	while counter < word.length
 		##puts "running while loop"
 		##puts word[counter]
 		
@@ -94,7 +94,7 @@ def decrypt(word)
 	counter =  0
 	decrypted = Array.new
 
-	while counter <= word.length
+	while counter < word.length
 		##puts "running while loop"
 		##puts word[counter]
 
