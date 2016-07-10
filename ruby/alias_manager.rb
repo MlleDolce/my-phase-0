@@ -16,22 +16,24 @@ def spy_name_generator
 		consonants_str = 'bcdfghjklmnpqrstvwxz'
 		consonants = consonants_str.split('')
 		if vowels.include?(letter) || vowels.include?(letter.downcase) == true
-			p letter = letter.downcase
+			letter = letter.downcase
 			index_before = vowels.index(letter)
 			vowels.rotate!
 			#p index_after = vowels.index(letter)
-			p letter = vowels[index_before]
+			letter = vowels[index_before]
 		elsif consonants.include?(letter) || consonants.include?(letter.downcase) == true
-			p letter = letter.downcase
+			letter = letter.downcase
 			index_before = consonants.index(letter)
 			consonants.rotate!
-			p letter = consonants[index_before]
+			letter = consonants[index_before]
 		else
-			p letter = letter
+			letter = letter
 		end
 	end
 	p spy_name = letters.join.split(' ').each{|name| name.capitalize!}.join(' ')
 end
+
+spy_name_generator
 
 
 
