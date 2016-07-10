@@ -1,0 +1,40 @@
+<!DOCtype HTML>
+<html>
+  <head>
+    <title>Checkout</title>
+  </head>
+  <body>
+
+    <form action="success.html" method="post">
+      <fieldset>
+        <div>
+          <label>Full Name:</label>
+          <input type="text" name="custname">
+        </div>
+        <div>
+          <label>Customer Email:</label>
+          <input type="email" name="custemail">
+        </div>
+      </fieldset>
+      <fieldset>
+        <div>
+          <label>Tea order size:</label>
+          <select name="teasize">
+            <option value="small">1/2 lb</option>
+            <option value="medium">1 lb</option>
+            <option value="large">2 lb</option>
+          </select>
+        </div>
+        <p>
+          <label>
+            "Tell us a kind of tea you'd like to see us carry
+            in our inventory."
+            <textarea name="favoriteteas" rows="5" cols="25"></textarea>
+          </label>
+        </p>
+      </fieldset>
+    <button type="submit">Submit order</button>
+  </form>
+</body>
+
+</html>
