@@ -8,7 +8,7 @@ Spy_Names = Hash.new
 
 def spy_name_generator
 	loop do
-		puts "Welcome to the Spy Name Generator.  Please type your full name"
+		puts "Welcome to the Spy Name Generator.  Please type your full name. Type 'done' to exit."
 		name = gets.chomp.to_s
 		
 		if name.include?('done')
