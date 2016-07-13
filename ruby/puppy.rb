@@ -53,7 +53,7 @@ remy.high_five
 kittens = []
 
 i = 0
-until i > 50
+until i == 50
 	unnamed_kitten = Kitten.new
 	kittens << unnamed_kitten
 	i += 1

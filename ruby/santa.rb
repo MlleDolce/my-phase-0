@@ -1,6 +1,8 @@
 santas = []
 
 class Santa
+	attr_reader :ethnicity
+	attr_accessor :gender, :age
 
 	def initialize(gender, ethnicity)
 		puts "Initializing new Santa instance..."
@@ -34,18 +36,6 @@ class Santa
 		@reindeer_ranking.push(reindeer_name)
 		puts @reindeer_ranking
 	end
-
-	def reassign_gender=(new_gender)
-		@gender = new_gender
-	end
-
-	def age
-		@age
-	end
-
-	def ethnicity
-		@ethnicity
-	end
 end
 
 genders = ["male", "female", "bi-gender", "N/A", "male-female", "female-male"]
@@ -65,8 +55,8 @@ Andrea = Santa.new("female", "white")
 
 p Andrea.get_mad_at("Rudolph")
 
-p Andrea.reassign_gender = "unicorn"
-p Andrea.age
+p Andrea.gender = "unicorn"
+p Andrea.age = 30
 p Andrea.ethnicity
 
 
