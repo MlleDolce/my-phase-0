@@ -22,26 +22,57 @@
 # => Use attr_reader and attr_accessor
 # => Use an initialize method that sets at least one attribute
 
-class Grand_Piano
-	attr_reader :make, :model, :kind_of_wood
-	attr_accessor :age, :tunes_per_year, :broken_strings, :finish_color,
+# Release 2: Use Your Class in a Program
 
-	def initialize(brand, model)
+# Modify your program so that it has a user interface (a user can interact with your program via the command line).
+# => Your user should be allowed to create as many instances of your class as they like.
+# => Prompt the user for each attribute, and don't forget to convert their input to the appropriate data type. 
+#     Store these class instances in an array.
+# => When the user indicates that they are finished creating instances, loop through the array 
+#     and print out the attributes of each instance as a confirmation message of what was created.
+
+class Grand_Piano
+	attr_reader :make, :model, :kind_of_wood, :year
+	attr_accessor :broken_strings, :tunes_per_year
+
+	def initialize(brand, model, year, wood)
+		puts "Initializing new Grand_Piano instance...."
 		@make = brand
 		@model = model
-		@age = age
+		@year = year
+		@kind_of_wood = wood
 		@broken_strings = 0
+		@tunes_per_year = 0
 	end
 
-	def maintenance(integer)
-		puts "You have #{@broken_strings} on your #{@make}."
+	def maintenance(num_broken_strings, tunes_per_year)
+		puts "You have #{num_broken_strings} broken string on your #{@make}."
+			if num_broken_strings > 0
+				puts "You should get that taken care of soon."
+			else
+				puts "Congratulations.  Your piano is in tip top shape"
+			end
 		puts "You tune your piano #{tunes_per_year} times per year"
+		@broken_strings = num_broken_strings
+		@tunes_per_year = tunes_per_year
 	end
 
 	def play(song)
 		puts "*sings beautifully* You played #{song}"
 	end
 end
+
+cleopatra = Grand_Piano.new("Steinway", "L", 1927, "walnut")
+
+cleopatra.maintenance(1, 2)
+p "Your Grand piano is of Make: #{cleopatra.make}, Model: #{cleopatra.model}, Year: #{cleopatra.year}, kind_of_wood: #{cleopatra.kind_of_wood}"
+
+
+
+
+
+
+
 
 
 
