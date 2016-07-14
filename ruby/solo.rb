@@ -90,7 +90,6 @@ def user_interface
 	puts "Thank you for your input.  Processing..."
 
 
-
 	# create array to store all the new instances of Grand Piano
 	until pianos.length == instances
 		pianos << Grand_Piano.new(make, model, year, wood)
