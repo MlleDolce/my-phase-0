@@ -10,7 +10,7 @@
 
 # Pseudocode your design as comments in phase-0-tracks/ruby/solo.rb.
 
-# 1. create reader and accessor attributes for class Grand_Piano
+# 1. create reader attributes (:keys and :legs), and accessor attributes for class Grand_Piano
 # 2. create initializer method to include main attributes: make, model and age
 # 3. create two more methods: maintenance and play
 
@@ -32,7 +32,8 @@
 #     and print out the attributes of each instance as a confirmation message of what was created.
 
 class Grand_Piano
-	attr_accessor :make, :model, :kind_of_wood, :year, :broken_strings, :tunes_per_year
+	attr_reader :make, :model, :kind_of_wood, :year
+	attr_accessor :broken_strings, :tunes_per_year
 
 	def initialize(brand, model, year, wood)
 		puts "Initializing new Grand_Piano instance...."
@@ -45,13 +46,18 @@ class Grand_Piano
 	end
 
 	def maintenance(num_broken_strings, tunes_per_year)
-		puts "You have #{num_broken_strings} broken string on your #{@make}."
-			if num_broken_strings > 0
-				puts "You should get that taken care of soon."
-			else
-				puts "Congratulations.  Your piano is in tip top shape"
-			end
-		puts "You tune your piano #{tunes_per_year} times per year"
+		if num_broken_strings > 0
+			puts "You should take better care of your piano.  Get your broken strings fixed right away."
+		else
+			puts "Congratulations, all 88 keys on your piano are functional!"
+		end
+
+		if tunes_per_year == 0
+			puts "Yikes!  You must be tone deaf.  You should have your piano tuned at least once per year"
+		else
+			puts "Congratulations.  Your piano is in tip top shape"
+		end
+		
 		@broken_strings = num_broken_strings
 		@tunes_per_year = tunes_per_year
 	end
@@ -83,12 +89,6 @@ def user_interface
 
 	puts "Thank you for your input.  Processing..."
 
-	@make = make
-	@model = model
-	@year = year
-	@kind_of_wood = wood
-	@broken_strings = broken_strings
-	@tunes_per_year = tunes_per_year
 
 
 	# create array to store all the new instances of Grand Piano
@@ -96,14 +96,13 @@ def user_interface
 		pianos << Grand_Piano.new(make, model, year, wood)
 	end
 
-	# **** 2:45pm Attr read and accessors: which ones to set?  Where do I put 'user_interface'? in its own method?  
-	#  Or do I put user_interface in the program?
-
 	#loop through array and print out each attribute
 	pianos.each do |piano|
 		puts "Grand_Piano_no.#{pianos.index(piano)} is Make: #{piano.make}, Model: #{piano.model},
-		Year: #{piano.year}, Wood: #{piano.kind_of_wood}, Broken Strings: #{piano.broken_strings}, 
-		Tunes per Year: #{piano.tunes_per_year}"
+		Year: #{piano.year}, Wood: #{piano.kind_of_wood}"
+		piano.maintenance(broken_strings, tunes_per_year)
+		puts "In summary: Your piano has #{piano.broken_strings} broken strings, and is tuned #{piano.tunes_per_year} times per year."
+		puts "---------------------------------------------------------"
 	end
 	puts "#{instances} instances of Grand_Piano are now created"
 end
