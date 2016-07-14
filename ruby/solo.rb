@@ -32,8 +32,7 @@
 #     and print out the attributes of each instance as a confirmation message of what was created.
 
 class Grand_Piano
-	attr_reader :make, :model, :kind_of_wood, :year
-	attr_accessor :broken_strings, :tunes_per_year
+	attr_accessor :make, :model, :kind_of_wood, :year, :broken_strings, :tunes_per_year
 
 	def initialize(brand, model, year, wood)
 		puts "Initializing new Grand_Piano instance...."
@@ -62,19 +61,56 @@ class Grand_Piano
 	end
 end
 
-cleopatra = Grand_Piano.new("Steinway", "L", 1927, "walnut")
+def user_interface
+	piano_attributes = []
+	pianos = []
 
-cleopatra.maintenance(1, 2)
-p "Your Grand piano is of Make: #{cleopatra.make}, Model: #{cleopatra.model}, Year: #{cleopatra.year}, kind_of_wood: #{cleopatra.kind_of_wood}"
+	puts "Welcome to Grand_Piano interface.  When you are done, please type 'done'."
+	puts "How many instances of Grand_Piano would you like to make?"
+	instances = gets.chomp.to_i
+	puts "What make/brand is your piano?"
+	make = gets.chomp.to_s
+	puts "Model?"
+	model = gets.chomp.to_s
+	puts "What year was your piano manufactured in?"
+	year = gets.chomp.to_i
+	puts "What kind of wood is your piano made of?"
+	wood = gets.chomp.to_s
+	puts "How many broken strings does your piano have?"
+	broken_strings = gets.chomp.to_i
+	puts "How many times per year do you tune your piano?"
+	tunes_per_year = gets.chomp.to_i
+
+	puts "Thank you for your input.  Processing..."
+
+	@make = make
+	@model = model
+	@year = year
+	@kind_of_wood = wood
+	@broken_strings = broken_strings
+	@tunes_per_year = tunes_per_year
 
 
+	# create array to store all the new instances of Grand Piano
+	until pianos.length == instances
+		pianos << Grand_Piano.new(make, model, year, wood)
+	end
 
+	# **** 2:45pm Attr read and accessors: which ones to set?  Where do I put 'user_interface'? in its own method?  
+	#  Or do I put user_interface in the program?
 
+	#loop through array and print out each attribute
+	pianos.each do |piano|
+		puts "Grand_Piano_no.#{pianos.index(piano)} is Make: #{piano.make}, Model: #{piano.model},
+		Year: #{piano.year}, Wood: #{piano.kind_of_wood}, Broken Strings: #{piano.broken_strings}, 
+		Tunes per Year: #{piano.tunes_per_year}"
+	end
+	puts "#{instances} instances of Grand_Piano are now created"
+end
 
+#cleopatra = Grand_Piano.new("Steinway", "L", 1927, "walnut")
 
+#cleopatra.maintenance(1, 2)
+#p "Your Grand piano is of Make: #{cleopatra.make}, Model: #{cleopatra.model}, Year: #{cleopatra.year}, kind_of_wood: #{cleopatra.kind_of_wood}"
 
-
-
-
-
-
+user_interface
