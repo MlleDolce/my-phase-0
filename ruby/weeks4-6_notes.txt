@@ -207,7 +207,143 @@ This Week's Goals:
 	-Import prewritten behavior into objects
 	-Test objects with Rspec
 
-	6.1
+	6.1 Introduction to Classes
+		-design a class
+		-declare your class and create an instance in irb
+
+	6.2 Pairing.  Instance methods
+		-adding behavior to a class
+		-declare an initialize method
+		-write your own class
+
+		puppy_methods.rb
+
+	6.3 Attributes
+		-getters and setters
+		-attr_reader and attr_accessor
+
+	Project: santa.rb
+
+	6.4 Solo challenge: Designing and Implementing a Class
+		Your class should have:
+			- at least three attributes (using at least two data types) whose values will vary from instance to instance (example: age)
+			- at least three methods, at least one of which takes an argument
+		Your class should use:
+			- attr_reader and attr_accessor
+			- an initialize method that sets at least one attribute
+		Modify your program so that it has a user interface (a user can interact with your program via the command line).
+			- Your user should be allowed to create as many instances of your class as they like.
+			- Prompt the user for each attribute, and don't forget to convert their input to the appropriate data type. 
+			  Store these class instances in an array.
+			- When the user indicates that they are finished creating instances, 
+			  loop through the array and print out the attributes of each instance as a confirmation message of what was created.
+
+	Project: solo.rb
+
+	6.5 Modules
+
+		Modules are used when we need to create a method for a frequent task, or set of methods for a group of frequent tasks
+		A Module is a set of BEHAVIOR, not a genre of objects (which is a class)
+
+		Modules have two main uses:
+
+		1.  Modules provide compartmentalization for methods, so instead of calling some_method, you would call SomeModule.some_method -- similar to how you might organize files into folders in order to group them. This compartmentalization prevents clutter, and decreases the likelihood that one programmer might accidentally overwrite the method of another programmer. 
+
+		calculate_tax, for instance, is a common enough task that three separate programmers working on the same codebase might unknowingly write different versions of it, causing major problems in the program. In constrast, FederalTaxAssessor.calculate_tax, StateTaxAssessor.calculate_tax, and CityTaxAssessor.calculate_tax could exist instead as three clearly separate methods, staying out of each other's way. This practice of compartmentalization is called namespacing.
+
+		2.  Modules can be written as mixins, meaning they can be "mixed in" to classes to give classes more functionality. Think of mixins as a sort of extension pack or toolbelt that can be used by several different classes. For example, both a Parrot class and a Leprechaun class might use the same Speech module for basic speech functionality, even if those two classes have little else in common.
+
+		
+		How to write a module:
+
+
+		1. Declare your module. The syntax for declaring a module is pretty simple:
+
+			module Shout
+			  # we'll put some methods here soon, but this code is fine for now!
+			end
+
+		2. In your terminal, run IRB from the directory that contains shout.rb. We can use require_relative to load our new module:
+
+			require_relative 'shout'
+			Shout.singleton_methods
+
+			* We have now loaded the module.  BUT, it does not have any methods yet
+
+		3. Exit IRB and add this method for yelling angrily:
+
+			module Shout
+			  def self.yell_angrily(words)
+			    words + "!!!" + " :("
+			  end
+			end
+
+			* Notice the slight difference in syntax from the way we've added instance methods to classes: 
+			the methods of standalone modules must be defined on the self keyword. 
+			Other than that, the syntax should look pretty familiar.
+
+		4. Add a yelling_happily method to our module. You can decide what that method should return.
+
+		5. Add driver code underneath your module declaration that calls both of your module methods. 
+			If you aren't sure what will work, you can experiment in IRB first by requiring your file and then trying out some method calls. 
+
+
+		How to Mixin a Module:
+
+
+		1.  Declare classes for a bird and a plane:
+
+				class Bird
+				end
+
+				class Plane
+				end
+
+		2.  Now, let's write a Flight module. We'll need to do that above our class declarations, at the top of the file.
+
+				module Flight
+				  def take_off(altitude)
+				    puts "Taking off and ascending until reaching #{altitude} ..."
+				  end
+				end
+			* But wait. Where's that self keyword we just learned about? When we're writing a module as a mixin designed to add instance methods to a class, 	we don't use the self keyword. We can define our module methods the same way we would write instance methods inside of a class.
+
+		3. Add your module to your Bird and Plane classes:
+
+				class Bird
+				  include Flight
+				end
+
+				class Plane
+				  include Flight
+				end
+
+		4. Now, instances of our Bird and Plane classes will have the ability to take off. 
+		See for yourself by adding this code to the bottom of the file and running it from the command line:
+
+			bird = Bird.new
+			bird.take_off(800)
+
+			plane = Plane.new
+			plane.take_off(30000)
+
+		Project: convert shout.rb to a mixin.
+
+
+	6.6 Pairing: Testing a Class with RSpec
+
+	'TTD' = Test Driven Development
+
+	-install rspec:  in shell type: 'gem install rspec'
+	-write Rspec test
+	-research => Rspec cheat sheets?
+
+	Project: enter directory ruby/list.  Make all of the rspec tests pass for the test file.  
+
+
+
+
+
 
 
 
