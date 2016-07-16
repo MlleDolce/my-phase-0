@@ -1,0 +1,217 @@
+# 07/15/16 
+# List of Ruby Skills learnt in DBC: Weeks 4, 5 & 6
+
+
+
+Week 4: INTRO TO RUBY
+
+	Review from pre-DBC:
+	- how to use IRB (Interactive Ruby Shell)
+	-setting up user interfaces.  How to ask users for input with 'gets.chomp'
+	-printing to console with 'puts'
+	-.to_i and .to_f methods
+
+	4.4: Boolean Logic with if else statements.  Using && and || symbols 
+	4.5: Debugging with error messages.  Recognizing ArgumentError messages (wrong number of arguments provided)
+		BEST PRACTICES for DEBUGGING: 
+			1. When debugging, use test_branches in gitflow to test theories
+				- test one theory at a time
+				- if your theory turns out to be incorrect, git checkout <BRANCH_NAME> to revert to your last commit
+			2.  Use print statements to keep track of what your program is doing.
+				-you can remove the print statements once a section of code is verified and working
+				- use 'puts' or 'p' but be careful with both.  'puts' if used on the last line of a method will return 'nil' instead of a result.  
+				-'p' will return a value regardless, BUT is generally only used for debugging.
+					- you should remove all instances of 'p' when your program is finished and is working
+			3.  Test your code frequently
+			4.  Commit your code frequently.  Good workflow can feel like a lot of extra effort, but that's 	nothing compared to the effort of spending six hours wringing your hands over your broken code.
+
+	4.6: More Methods.
+		-local variables vs. global variables
+		-interacting with strings
+		-how to call the index of a string
+			- "agent".index("a")
+			- .next, .reverse, .length
+			- using '+='
+		-Test: How to 'encrypt' letters in a string to give an encrypted output for a user's input
+			-be able to use a while loop, if else statements
+			-can use the alphabet as a string to draw upon letters needed for encryption
+
+	Definitions:
+		DATA TYPES:
+		-string, integer, float, nil, boolean
+		ALGORITHMS:
+		METHODS:
+		-return value, side affect, parameter, argument, implicit return
+		-global scope vs. method scope
+		CONTROL FLOW:
+		-loop, if, elsif, else, while, until
+
+
+
+Week 5: DATA STRUCTURES and ITERATION in RUBY
+
+The week's goals:
+	-Understand the role of objects and data structures in Ruby
+	-Use two common data structures, hashes and arrays, to organize your program's data
+	-Iterate (loop) through data structures and manipulate their contents
+	-Learn to access complex (nested) data structures
+
+	5.1: Using Ruby Documentation
+		-Everything is An Object
+		-Objects Are Implemented with Classes
+		-Programmers are Documentation Detectives
+
+		http://ruby-doc.org/
+
+	5.2: Arrays
+
+		Array, definition: In computer science, an array is a list of items, and arrays exist in lots of programming languages. If you are writing a program that builds a shopping list, to-do list, or any other ordered sequence of items, it makes sense to use an array. Arrays are ordered, meaning that you can always count on the items in the array to be listed in the order you put them there.
+
+		-be able to Ruby documentation to learn about methods
+		-know how to:
+
+		1. Initialize an array and store in a variable: 
+				array = Array.new
+				p array
+		2. Add items to an array:
+				array << item1 << item 2 (etc), or
+				array.push(item1, item2), or
+				array = [item1, item2]
+		3. Delete item at a given index:
+				array.delete_at[2]
+		4. Insert item at given index:
+				array.insert(2, "item")
+		5. Remove the first item of the array without having to refer to its index. 
+				array.shift
+		6. Ask the array whether it includes a certain item. Print the result of this method call (labeled so it prints as more than just an isolated boolean value without any context.)
+				p array.include?("item") 
+		7. Initialize another array that already has a few items in it.
+				array2 = [item1, item2, item3]
+		8. Add the two arrays together and store them in a new variable. Print the new array.
+				combined_arrays = array + array2
+
+	5.3: Symbols and Hashes
+
+		Hashes, definition:
+
+		Hashes organize data into key-value pairs. The key is the data label of the pair (name, for instance), and the value is the unique information ("Philippe Starck").
+
+		Three ways to create a Hash:
+		1. initialize an empty hash and add data to it later:
+			interior_designer_job = {}
+		2. initialize it with some data using the hash rocket (=>) to separate keys from values:
+			interior_designer_job = {:salary => 100000, "Must be certified" => true}
+		3. symbol keys allow you to use a special shortcut: you can choose to skip the hash rocket and 		move the colon to the end of the symbol. This declaration is equivalent to one above it:
+			interior_designer_job = {salary: 100000, "Must be certified" => true}
+
+		Accessing Hash Values:
+
+		You can access a value in a hash with the syntax of your_hash[your_key].
+
+		# The Hash Class
+
+		1. How do you delete a key pair?
+		h.delete("a")
+		2.  What happens if you try to access the value of a key that's not in the hash?
+		returns "nil"
+		3.  Regarding the answer you got from the previous question, is there a way to set a different default return value when a key is not present in a hash?
+		Yes.  You can set a new default by either:
+			a.) sending it as an argument to new. eg:
+			grades = Hash.new(0), or
+			b.) 
+			grades.default = 0
+		4.  How can you access just the keys of a hash? What data type does this method return?
+		h.keys
+		#This will return a new array populated with the keys of the hash.  Strings
+		5. How do you remove everything from the hash at once (returning an empty hash)?
+		h.clear
+		6. How can you access just the values of a hash?  
+		h.values
+		This will return a new array populated with the values of the hash.
+
+	5.4: Iteration
+
+		Learn Block Syntax:
+
+			Let's say we had a method that printed a variable -- kind of a silly method to write, but it will work as a simple example.
+
+			def print_it(thing_to_print)
+			  puts thing_to_print
+			end
+
+			The block equivalent to this method would be either of the following (which won't work on their own if you try them in Ruby):
+
+			{ |thing_to_print| puts thing_to_print }
+
+			do |thing_to_print|
+			  puts thing_to_print
+			end
+
+			About Blocks:
+
+			1. Blocks don't have names. Generally speaking, you don't define them ahead of time. Instead, you drop them into your program wherever you need them.
+			2.  Instead of taking a parameter in parentheses, blocks take them in pipes: |thing_to_print|. Second, blocks are wrapped in either curly braces or a do and end. Curly braces are typically used for very short blocks like the one above, while do and end are used for multi-line blocks:
+
+			Use each, map, and map!
+
+			Hash Methods:
+
+			1. A method that iterates through the items, deleting any numbers that are less than 5:
+				digit_array.delete_if{|x| x<5}
+			2. A method that filters a data structure for only items that do satisfy a certain condition
+				(for example, keeping any numbers that are less than 5)."
+				digit_array = [0,1,2,3,4,5,6,7,8,9]
+				digit_array.keep_if{|x| x<5}
+			3.  A different method that filters a data structure for only items satisfying a certain 	condition -- Ruby offers several options
+				digit_array = [0,1,2,3,4,5,6,7,8,9]
+				p "these digits are even:"
+				digit_array.select!{|x| x.even?}
+
+			answers: iteration.rb
+
+		5.5: Nested Data Structures
+
+			Use Arrays and Hashes to build your own nested data structure
+
+			ex: 
+				nested_data_structures.rb
+				house_maker.rb
+				## classy house
+
+		5.6: Manipulating Strings with Iteration
+
+			A Few new Array and String Methods
+
+			string.split('') OR string.chars
+				- returns an array of individual letters for each string entered
+			array.join('') or array.join(' ')
+				-joins each item of the array into a single string with no spaces ('')
+				-joins each item of the array into a single string with a space inbetween each item
+
+			If you wanted to iterate through each individual letter of a string to rotate to the next letter and then join them all again:
+			"hello world".chars.map!{|letter| letter.next}.join('')
+
+			week 5 project: alias_manager.rb
+
+			WEEK 5 assessment test: calculator.rb
+
+			Booster video: house_maker.rb
+
+
+
+Week 6: CLASSES in RUBY
+
+This Week's Goals:
+	-Design and define new objects
+	-Set attributes and methods for objects
+	-Import prewritten behavior into objects
+	-Test objects with Rspec
+
+	6.1
+
+
+
+
+
+
+
