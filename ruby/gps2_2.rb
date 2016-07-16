@@ -47,11 +47,11 @@ Grocery_list = {}
 def create_list(grocery_string)
 grocery_array = grocery_string.split(' ')
 
-grocery_array.each { |item| Grocery_list[item] = 0}
+grocery_array.each { |item| Grocery_list[item] = 1}
 p Grocery_list
 end
 
-def add_item(item, quantity = 0)
+def add_item(item, quantity = 1)
 	Grocery_list[item] = quantity
 	p Grocery_list
 end
