@@ -117,7 +117,7 @@ alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density],
 alaska.virus_effects
 
 # Release 5: (07.25.16, 11:30pm) Create a report for all 50 states in a DRY way. Does this belong inside the class or outside of it? Why?
-## It belongs outside of the class because STATE_DATA is a global hash.
+## It belongs outside of the class because we are creating new instances of the class VirusPredictor.
 ### create an array to hold all of the STATE_DATA keys:
 data_keys = STATE_DATA.keys
 data_keys.each do |state|
