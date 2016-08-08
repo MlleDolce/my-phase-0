@@ -49,3 +49,22 @@
 
 # Design a user-interface for two players.  The first player runs the game by providing the 'word', while the 2nd player 
 # continues to guess what the word is until he/she runs out of guesses.
+
+class Hangman
+	attr_reader :word, :guess_count, :is_over, :correct_guesses, :letter_slots
+	def initialize(word)
+		@word = word
+		@guess_count = 0
+		@is_over = false
+		@correct_guesses = []
+		@letter_slots = ("_ " * @word.length).split(' ')
+	end
+
+	def check_word_complete
+		if @# word is completed
+	end
+end
+
+game = Hangman.new("Hippopotomus")
+p game.letter_slots
+
