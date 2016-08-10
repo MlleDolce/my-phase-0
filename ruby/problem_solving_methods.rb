@@ -113,3 +113,7 @@ fib(100)
 
 puts(sort([2,16,4,9,1]))
 puts(fib1(6))
+
+arr = [33, 45, 3, 12]
+p search_array(arr, 45)
+p search_array(arr, 1)

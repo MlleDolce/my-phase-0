@@ -1,5 +1,5 @@
 
-# 5.2 Release, No. 1: 
+# 5.4 Release 1, Question 1: 
 # A method that iterates through the items, deleting any that meet a certain condition 
 # (for example, deleting any numbers that are less than 5).
 int1_array = [1, 2, 3, 4, 5, 6]
@@ -16,7 +16,7 @@ puts "After .delete_if:"
 p int1_array
 p fruit_hash
 
-# 5.2 Release, No. 2:
+# 5.4 Release 1, Question 2:
 # A method that filters a data structure for only items that do satisfy a certain condition 
 # (for example, keeping any numbers that are less than 5).
 int2_array = [3, 4, 5, 6, 7]
@@ -33,7 +33,7 @@ puts "After .delete_if:"
 p int2_array
 p fruit2_hash
 
-# 5.2 Release, No. 3
+# 5.4 Release 1, Question 3:
 # A different method that filters a data structure for only items satisfying a certain condition 
 # -- Ruby offers several options
 int3_array = [100, 200, 300]
@@ -52,7 +52,7 @@ puts "after .values_at:"
 p fruit3_hash.values_at("orange", "grapes")
 
 
-# 5.1 Release
+# 5.4 Release 0
 
 family_pets = ["Remy", "Molly", "Toklat", "Spicy", "Ramen"]
 
@@ -78,8 +78,6 @@ end
 puts "After .map call"
 p family_pets
 p my_hash
-
-
 
 
 ## 5.0

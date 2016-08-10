@@ -340,6 +340,9 @@ This Week's Goals:
 
 	Project: enter directory ruby/list.  Make all of the rspec tests pass for the test file.  
 
+	how to enter rspec test into shell:
+	rspec -fd <name of ruby file>
+
 
 
 
