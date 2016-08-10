@@ -40,12 +40,16 @@ var longestPhrase = function(myArray) {
 	var longPhrase = myArray[0]
 	//console.log(longPhrase.length)
 
-	for (i = myArray.length - 1; i < myArray.length; i++) {
+	for (i = 1; i < myArray.length; i++) {
 			if (myArray[i].length > longPhrase.length) {
 				var longPhrase = myArray[i];
 			}
 	};
-	console.log("The longest phrase in the array is" + " " + longPhrase + " at" + " " + longPhrase.length + " characters");
+	console.log("The longest phrase in the array is" + " '" + longPhrase + "' at" + " " + longPhrase.length + " characters");
+}
+
+var compareObjects = function(object1, object2) {
+	
 }
 
 arrayContainer.myArray = myArray

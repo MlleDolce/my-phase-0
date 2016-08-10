@@ -11,6 +11,7 @@
 var horseColors = ["red", "beige", "speckled", "black"]
 var horseNames = ["Bob", "Dan", "Melissa", "Kate"]
 
+horseColors.push("white")
 horseNames.push("Sam")
 //console.log(horseNames)
 
