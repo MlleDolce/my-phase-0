@@ -1,0 +1,20 @@
+8.3 Solo-Challenge Build a Database
+Release 0 - Design a Schema
+
+One-To-Many relationship:
+Cocktails
+
+Table 1: cocktails
+id (integer primary key)
+name (varchar 255)
+fruity (boolean)
+sour (boolean)
+boozy (boolean)
+alcohol_id (int)
+
+Table 2: Alcohol-Base
+Whiskey (Rye or Bourbon)
+Gin
+Rum
+
+

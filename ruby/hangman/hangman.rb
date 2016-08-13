@@ -37,7 +37,7 @@
 # 8.  Create a user_interface instance method for no's 4 & 5.  
 
 
-require 'random-word' 
+require 'random_word_generator' 
 
 class Hangman
 	attr_reader :word, :guess_count, :round_number
@@ -100,12 +100,12 @@ class Hangman
 	def user_interface
 		if @round_number == 1
 			puts "Welcome to Ruby Hangman."  
-			puts "You will be given a maximum of ten turns to guess the letters of the chosen word."  
+			puts "You will be given a maximum of twelve turns to guess the letters of the chosen word."  
 			puts "Let's get started!"  
 		end
 
 		# Method will stop looping if guess count is greater than 9 or if the word is complete:
-		while @guess_count < 10
+		while @guess_count < 12
 			if !@word_complete
 				puts "------------\nRound #{@round_number}, \nGuess ##{@guess_count} \nHere is your word:"
 				puts word_rack
@@ -120,7 +120,7 @@ class Hangman
 			end
 		end
 
-		if @guess_count >= 10
+		if @guess_count >= 12
 			puts "Game over.  Too many guesses... The word you were trying to guess is '#{@word}'."
 			puts "My dog is better at this game than you are!"
 		end
@@ -128,7 +128,7 @@ class Hangman
 end
 
 def random_word_gen
-	word = RandomWord.nouns.next
+	word = RandomWordGenerator.word
 	if word.length > 5 && word.length < 10 && !word.include?("_")
 		return word
 	else

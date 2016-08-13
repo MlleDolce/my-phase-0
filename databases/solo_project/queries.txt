@@ -1,0 +1,73 @@
+Release 2, SQL QUERIES:
+
+1. Display the information in one table (either table is fine)
+
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> SELECT * FROM cocktails;
+1|Manhattan|false|false|true|1
+2|Whiskey Sour|true|true|false|1
+3|Bee's Knees|true|true|false|2
+4|Last Word|false|true|true|2
+5|Mojito|true|false|false|3
+6|Paddington|true|false|false|3
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> UPDATE cocktails SET fruity="true" WHERE name="Last Word";
+
+3. Display the information in both tables using one query.
+
+sqlite> SELECT * FROM cocktails, alcohol_base WHERE cocktails.alcohol_base_id = alcohol_base.id;
+1|Manhattan|false|false|true|1|1|whiskey
+2|Whiskey Sour|true|true|false|1|1|whiskey
+3|Bee's Knees|true|true|false|2|2|gin
+4|Last Word|true|true|true|2|2|gin
+5|Mojito|true|false|false|3|3|rum
+6|Paddington|true|false|false|3|3|rum
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+sqlite> SELECT cocktails.name, alcohol_base.name FROM cocktails JOIN alcohol_base ON cocktails.alcohol_base_id = alcohol_base.id;
+Manhattan|whiskey
+Whiskey Sour|whiskey
+Bee's Knees|gin
+Last Word|gin
+Mojito|rum
+Paddington|rum
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> DELETE FROM cocktails WHERE name="Whiskey Sour";
+sqlite> SELECT * FROM cocktails;
+1|Manhattan|false|false|true|1
+3|Bee's Knees|true|true|false|2
+4|Last Word|true|true|true|2
+5|Mojito|true|false|false|3
+6|Paddington|true|false|false|3
+
+
+Release 3: Different Kinds of 'Joins'
+
+  (Inner Join (example in No. 3))
+
+  Left Join: returns all rows from the first table, even if there are no matches in the 2nd table.  If there are rows in first table that do not have matches in second table, those rows also will be listed.
+
+  Updated cocktails to include an alcohol_base that is not in table 2:
+
+sqlite> INSERT INTO cocktails (name, fruity, sour, boozy, alcohol_base_id) VALUES ("Mezcal Mule", "true", "false", "false", 4);
+sqlite> UPDATE cocktails SET alcohol_base_id=5 WHERE name="Mezcal Mule";
+sqlite> INSERT INTO alcohol_base (name) VALUES ("vodka");
+sqlite> SELECT * FROM cocktails LEFT JOIN alcohol_base ON cocktails.alcohol_base_id = alcohol_base.id;
+1|Manhattan|false|false|true|1|1|whiskey
+3|Bee's Knees|true|true|false|2|2|gin
+4|Last Word|true|true|true|2|2|gin
+5|Mojito|true|false|false|3|3|rum
+6|Paddington|true|false|false|3|3|rum
+7|Mezcal Mule|true|false|false|5||
+sqlite>
+
+ ** SQLite 3 only supports LEFT join and INNER join (not RIGHT join and OUTER joins)
+
+
+
