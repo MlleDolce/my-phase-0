@@ -1,0 +1,37 @@
+8.4 Release 3: Queries.text
+
+1.  In the welp directory, create a file called queries.txt. Once you've figured out the queries below, paste them into queries.txt, along with the output from your database.
+
+2.  You've joined two tables before. How do you join three?
+-- With Inner Join.
+
+SELECT * FROM businesses, users INNER JOIN reviews ON reviews.business_id = businesses.id WHERE reviews.user_id = users.id;
+1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling|1|5|Best l'il chapel in the world!|1|2
+2|Amir's Towing|3|Angela|Jolie|2|2|Awful service. Waited 2.5hrs before someone came to tow me|2|3
+3|The Beagle Nightclub|1|Bradford|Pitt|3|3.5|Awesome night with the boys! Highly recommend|3|1
+
+3.  There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+SELECT 
+businesses.name, 
+users.first_name, 
+users.last_name, 
+reviews.stars, 
+reviews.comment 
+
+FROM businesses
+INNER JOIN users 
+INNER JOIN reviews 
+ON reviews.business_id = businesses.id WHERE reviews.user_id = users.id;
+
+Grundy Hollow Wedding Chapel|Mandy|Kaling|5|Best l'il chapel in the world!
+Amir's Towing|Angela|Jolie|2|Awful service. Waited 2.5hrs before someone came to tow me
+The Beagle Nightclub|Bradford|Pitt|3.5|Awesome night with the boys! Highly recommend
+sqlite>
+
+4.  How do you view the data of all three tables for just one particular business? 
+
+SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment, reviews.business_id, reviews.user_id FROM reviews 
+LEFT JOIN businesses ON reviews.business_id = businesses.id 
+LEFT JOIN users ON reviews.user_id = users.id
+WHERE businesses.name="Grundy Hollow Wedding Chapel";
