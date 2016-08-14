@@ -1,0 +1,24 @@
+8.4 Release 3: Many-To-Many Relationship Schema
+
+Topic: Pet Adoption
+
+(table 1)
+HOMELESS_ANIMALS
+id (integer primary key)
+name (varchar 255)
+type (varchar)
+
+(table 2)
+PEOPLE
+id (integer primary key)
+name (varchar 255)
+pet_type_preference (varchar 255)
+
+(table 3)
+ADOPTION_REGISTRATION
+id (integer primary key)
+date (int)
+location (varchar 255)
+agency (varchar 255)
+pets_id (int) --> from pets table
+people_id (int) --> from people table
