@@ -14,9 +14,7 @@ create_table1 = <<-SQL
   	gender VARCHAR(6),
   	email VARCHAR(100),
   	tidiness INT, 
-  	nightowl BOOLEAN(5),
-  	earlybird BOOLEAN(5),
-  	housing_needed BOOLEAN(5),
+  	workschedule VARCHAR(50),
   	neighborhood VARCHAR(50),
   	price INT 
   	)
@@ -29,9 +27,7 @@ create_table2 = <<-SQL
   	gender VARCHAR(6),
   	email VARCHAR(100),
   	tidiness INT,
-  	nightowl BOOLEAN(5),
-  	earlybird BOOLEAN(5),
-  	vacancy BOOLEAN(5),
+  	workschedule VARCHAR(50),
   	neighborhood VARCHAR(50),
   	price INT
   	)
@@ -43,92 +39,97 @@ db.execute(create_table2)
 manhattan_neighborhoods = ['Upper West Side', 'Upper East Side', 'Midtown East', "Hell's Kitchen", "Garment District", "Murray Hill", "Chelsea", "Gramercy Park", 
 	"West Village", "Greenwich Village", "East Village", "Soho", "Lower East Side", "Tribeca", "Financial District"]
 
-def create_user_needing_housing(db, name, gender, email, tidiness, nightowl, earlybird, housing_needed, neighborhood, price)
-	db.execute("INSERT INTO users_needing_housing (name, gender, email, tidiness, nightowl, earlybird, housing_needed, neighborhood, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [name, gender, email, tidiness, nightowl, earlybird, housing_needed, neighborhood, price])
+def create_user_needing_housing(db, name, gender, email, tidiness, workschedule, neighborhood, price)
+	db.execute("INSERT INTO users_needing_housing (name, gender, email, tidiness, workschedule, neighborhood, price) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, gender, email, tidiness, workschedule, neighborhood, price])
 end
 
-def create_user_seeking_roommate(db, name, gender, email, tidiness, nightowl, earlybird, vacancy, neighborhood, price)
-	db.execute("INSERT INTO users_seeking_roommate (name, gender, email, tidiness, nightowl, earlybird, vacancy, neighborhood, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [name, gender, email, tidiness, nightowl, earlybird, vacancy, neighborhood, price])
+def create_user_seeking_roommate(db, name, gender, email, tidiness, workschedule, neighborhood, price)
+	db.execute("INSERT INTO users_seeking_roommate (name, gender, email, tidiness, workschedule, neighborhood, price) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, gender, email, tidiness, workschedule, neighborhood, price])
 end
 
 #create_user_needing_housing(db, Faker::Name.name, 2, 'true', 'false', 'true', 1000)
 #create_user_seeking_roommate(db, Faker::Name.name, 3, 'false', 'true', 'true', 1200)
 
-1.times do
-	create_user_needing_housing(db, Faker::Name.name, ['male','female'].sample, Faker::Internet.email, rand(1..3), ['true', 'false'].sample, ['true', 'false'].sample, 'true', manhattan_neighborhoods.sample, (rand(130..210)*10))
+100.times do
+	create_user_needing_housing(db, Faker::Name.name, ['male','female'].sample, Faker::Internet.email, rand(1..3), 
+	['early bird', 'intermediate', 'night owl'].sample, manhattan_neighborhoods.sample, (rand(130..210)*10))
 end
 
-1.times do
-	create_user_seeking_roommate(db, Faker::Name.name, ['male','female'].sample, Faker::Internet.email, rand(1..3), ['true', 'false'].sample, ['true', 'false'].sample, 'true', manhattan_neighborhoods.sample, (rand(130..210)*10))
+100.times do
+	create_user_seeking_roommate(db, Faker::Name.name, ['male','female'].sample, Faker::Internet.email, rand(1..3), 
+	['early bird', 'intermediate', 'night owl'].sample, manhattan_neighborhoods.sample, (rand(130..210)*10))
 end
 
 puts "Welcome to the Manhattan Roommate Matcher.  Let's get started."
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 puts "Please enter your email address:"
-email = "a@hotmail.com" #gets.chomp.to_s
+email = gets.chomp.to_s
 
 puts "What is your full name?"
-name = "AKC" #gets.chomp.to_s
+name = gets.chomp.to_s
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 puts "What is your gender? ('male' or 'female')"
-gender = 'female' #gets.chomp.to_s
+gender = gets.chomp.to_s
 gender = 'other' if !(gender == 'male') && !(gender == 'female')
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 puts "Do you prefer your roommate to be the same gender? ('yes' or 'no preference')"
-gender_pref = 'no' #gets.chomp.to_s
+gender_pref = gets.chomp.to_s
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-puts "Hello #{name}!  What is your situation?  Are you (A.) searching for housing, or (B.) looking for a roommate for your dwelling?  Please enter 'A' or 'B'."
-housing_status = 'B' #gets.chomp.to_s
+puts "Hello #{name}!" 
+puts "What is your situation? Are you:"
+puts "(A.) searching for housing, or"
+puts "(B.) looking for a roommate for your dwelling?"
+puts "Please enter 'A' or 'B'."
+housing_status = gets.chomp.to_s
 
 loop until housing_status == "A" || housing_status == "B"
 	if housing_status == "A"
 	  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-	  puts "Which Manhattan neighborhood would you like to live in?  If you have no preference, enter 'no preference'."
+	  puts "Which Manhattan neighborhood would you like to live in?"
+	  puts "If you have no preference, enter 'no preference'."
 	  neighborhood = 'Garment District' #gets.chomp.to_s
 	  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 	  puts "What is the maximum rent amount you are willing to pay per month on a room?"
-	  price = 2100 #gets.chomp.to_i
+	  price = gets.chomp.to_i
 	elsif housing_status == "B"
 	  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 	  puts "In which Manhattan neighborhood is your home located?"
 	  neighborhood = 'Lower East Side' #gets.chomp.to_s
 	  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 	  puts "What is the rent amount you are asking for your room?"
-	  price = 2100 #gets.chomp.to_i
+	  price = gets.chomp.to_i
 	else
 	  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
 	  puts "That is not a valid input.  Please enter 'A' or 'B'"
-	  #housing_status = gets.chomp.to_s
+	  housing_status = gets.chomp.to_s
 end
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-puts "What is your level of tidiness on a scale from 1 to 3.  (3: 'very clean', 2: 'I clean now and then', 1: 'I don't mind a bit of mess')"
+puts "What is your level of tidiness on a scale from 1 to 3."  
+puts "(3: 'very clean', 2: 'I clean now and then', 1: 'I don't mind a bit of mess')"
 puts "Please enter a whole number between 1 and 3."
-tidiness = 2 #gets.chomp.to_i
+tidiness = gets.chomp.to_i
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-puts "Are you a night owl? (true or false)"
-nightowl = 'true' #gets.chomp.to_s
+puts "What best describes your sleeping habits/work schedule?"
+puts "Please enter 'early bird', 'night owl', or 'intermediate'."
+workschedule = gets.chomp.to_s
 
 puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-puts "Are you an early bird? ('true' or 'false')"
-earlybird = 'false' #gets.chomp.to_s
-
-puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-puts "Do you have a preference if your roommate is a night owl or an early bird? ('yes' or 'no')"
-sleep_preference = 'no' #gets.chomp.to_s
+puts "Do you prefer your roommate to have the same sleeping habits as you?"
+puts "Please type 'yes' or 'no'"
+sleep_preference = gets.chomp.to_s
 
 puts "Thank you for participating in the Manhattan Roommate Matcher, #{name}.  You have been added to our database of users."  
 puts "Calculating your matches..."
 
-
 if housing_status == "A"
 	# Add new user to database:
-	create_user_needing_housing(db, name, gender, email, tidiness, nightowl, earlybird, 'true', neighborhood, price)
+	create_user_needing_housing(db, name, gender, email, tidiness, workschedule, 'true', neighborhood, price)
 
 	# Create variable to represent the hash for ALL data of users seeking a roommate
 	housing_data = db.execute("SELECT * FROM users_seeking_roommate")
@@ -139,7 +140,7 @@ if housing_status == "A"
 		rs = roommate_seeker
 		# Create variables for each possible combinations of user preferences:
 		all_criteria = (price >= rs['price']) && tidiness == rs['tidiness'] &&
-		    			(nightowl == rs['nightowl'] || earlybird == rs['earlybird']) &&
+		    			workschedule = rs['workschedule'] &&
 		    			neighborhood == rs['neighborhood'] &&
 		    			gender == rs['gender']
 
@@ -150,15 +151,15 @@ if housing_status == "A"
 							neighborhood == rs['neighborhood']
 
 		sleep_only = (price >= rs['price']) && tidiness == rs['tidiness'] &&
-					(nightowl == rs['nightowl'] || earlybird == rs['earlybird'])
+						workschedule == rs['workschedule']
 
 		no_gender_pref = (price >= rs['price']) && tidiness == rs['tidiness'] &&
-		    			(nightowl == rs['nightowl'] || earlybird == rs['earlybird']) &&
+		    			workschedule == rs['workschedule'] &&
 		    			neighborhood == rs['neighborhood']
 
 		no_neighborhood_pref = (price >= rs['price']) && tidiness == rs['tidiness'] &&
-		    						(nightowl == rs['nightowl'] || earlybird == rs['earlybird']) &&
-		    						gender == rs['gender']
+		    					workschedule == rs['workschedule'] &&
+		    					gender == rs['gender']
 
 		no_sleep_pref = (price >= rs['price']) && tidiness == rs['tidiness'] &&
 		    			neighborhood == rs['neighborhood'] &&
@@ -178,7 +179,7 @@ if housing_status == "A"
 	end
 else
 	# Add new user to database:
-	create_user_seeking_roommate(db, name, gender, email, tidiness, nightowl, earlybird, 'true', neighborhood, price)
+	create_user_seeking_roommate(db, name, gender, email, tidiness, workschedule, neighborhood, price)
 
 	# Create variable to represent the hash for ALL data of users seeking a roommate
 	housing_data = db.execute("SELECT * FROM users_seeking_roommate")
@@ -193,12 +194,12 @@ else
 						gender == hs['gender']
 
 		sleep_only = (price <= hs['price']) && tidiness == hs['tidiness'] &&
-					(nightowl == hs['nightowl'] || earlybird == hs['earlybird'])
+					workschedule == hs['workschedule']
 
 
 		no_neighborhood_pref = (price <= hs['price']) && tidiness == hs['tidiness'] &&
-		    						(nightowl == hs['nightowl'] || earlybird == hs['earlybird']) &&
-		    						gender == hs['gender']
+		    					workschedule == hs['workschedule'] &&
+		    					gender == hs['gender']
 
 		no_preferences = (price <= hs['price']) && tidiness == hs['tidiness']
 
@@ -215,24 +216,46 @@ if good_matches.length == 0
   puts "I'm sorry.  We have no current users who match your housing needs."  
   puts "Please check in with us again soon, as our client network is rapidly growing.  Goodbye."
 else
+  puts
   puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
+  puts "Your roommate criteria are:"
+  		puts "desired Manhattan neighborhood: #{neighborhood}"
+  		puts "tidiness scale (1 to 3): #{tidiness}"
+  		if gender_pref == 'yes'
+  			puts "desired roommate gender: #{gender}"
+  		end
+  		if sleep_preference == 'yes'
+  			puts "desired roommate sleeping habits: #{workschedule}"
+  		end
+  		if housing_status == 'A'
+  			puts "The maximum monthly rent you are willing to pay : $#{price}"
+  		else
+  			puts "Your monthly rental rate: #{price}"
+  		end
+  puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
+  puts
   puts "Manhattan Roommate Matcher has calculated a total of #{good_matches.length} user matches for you:"
-       good_matches.each {|match| puts "#{match['name']} is a match!  email: #{match['email']}"}
+       good_matches.each do |match| 
+         if match['name'] != name
+       	   puts "#{match['name']} is a match!  email: #{match['email']}"
+       	 end
+       end
   puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-  puts good_matches
   puts "We hope to see you again soon.  Goodbye"
 end
 
-# Add columns for user's: gender ---> 3.5 hrs
-# Combine nightowl and earlybird columns into a 'work schedule' column.  Add 'intermediate' option
-# Write if statement for 'preferences'
+# Version 1.1:
+# 1.  Add columns for user's: gender ---> 3.5 hrs (8.15.16)
+# 2.  Combine nightowl and earlybird columns into a 'work schedule' column: 20 min. (8.15.16)
+# 3.  Add if statements to the final print statement to allow the statement to print/restate the user's preferences, 
+#     reflected in their database entry.  10min (8.15.16)
+
 # set price ranges/limits for each neighborhood 
 # Add more NYC neighborhoods.  Brooklyn & Queens too.  
 
 # Add more user interactions with database:
 # => allow queries for each category (table column): neighborhood, tidiness, etc
 # Sort all matches in increasing order of compatibility?
-# Add if statements to the final print statement to allow the statement to print/restate the user's preferences, reflected in their database entry
 
 # set up a database interaction for ADMIN.  Preference columns from user feedback should be added to each table. 
 #  ADMIN interaction should allow queries to match multiple users according to the preferences settings entered
