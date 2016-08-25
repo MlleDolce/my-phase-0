@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Suggestion Collection</title>
+</head>
+<body>
+	<p>Thank you for your submission!  Your suggestion has been added.  As follows here is the collection of suggestions:</p>
+		<ul>
+			<p><% @courses.each do |course| %></p>
+				<li><%= course['id'] %>, <%= course['title'] %></li>
+			<% end %>
+		</ul>
+	<p>Click <a href="/">here</a> to return to the home page</p>
+</body>
+</html>
